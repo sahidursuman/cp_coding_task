@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Retention emails</h1>
+
+<div id="retention_emails">
+  <% @retention_emails.each do |retention_email| %>
+    <%= render retention_email %>
+    <p>
+      <%= link_to "Show this retention email", retention_email %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New retention email", new_retention_email_path %>

@@ -1,0 +1,2 @@
+class RetentionEmail < ApplicationRecord
+end

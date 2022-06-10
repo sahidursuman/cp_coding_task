@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @retention_email %>
+
+<div>
+  <%= link_to "Edit this retention email", edit_retention_email_path(@retention_email) %> |
+  <%= link_to "Back to retention emails", retention_emails_path %>
+
+  <%= button_to "Destroy this retention email", @retention_email, method: :delete %>
+</div>
