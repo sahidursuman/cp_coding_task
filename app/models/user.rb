@@ -2,6 +2,9 @@ class User < ApplicationRecord
   has_many :recipes, :dependent => :destroy
   scope :recent, -> { order("created_at DESC") }
 
+  # Validations
+  validates :name, :email, presence: true
+
   
   # Usage 
   # User.find_by_date_ranges
