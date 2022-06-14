@@ -1,0 +1,44 @@
+<p style="color: green"><%= notice %></p>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <p><%= msg %></p>
+  </div>
+<% end %>
+
+<h1>Retention emails</h1>
+
+<%= form_tag search_retention_emails_path, method: 'POST' do %>
+<p>
+  <%= date_field_tag :date_from, (params[:date_from].present? ? Date.parse(params[:date_from]) : nil rescue nil ), placeholder: 'Date From' %>
+</p>
+
+<p>
+  <%= date_field_tag :date_to, (params[:date_to].present? ? Date.parse(params[:date_to]) : nil rescue nil ), placeholder: 'Date From' %>
+</p>
+
+<%= submit_tag 'Send' %><br />
+<%= submit_tag 'Search' %>
+
+<% end %>
+
+<%= link_to 'Download', search_retention_emails_path(format: 'csv', params: request.params) %>
+
+<div id="retention_emails">
+
+  <table style="border:1px solid black">
+  <tr>
+    <td>Name</td><td>Email</td><td>Published</td>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.recipes.first.published_at %></td>
+  </tr>
+    
+    
+    
+  <% end %>
+  </table>
+</div>

@@ -26,11 +26,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_09_210241) do
   end
 
   create_table "retention_emails", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.text "body"
     t.date "date_from"
     t.date "date_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_retention_emails_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +43,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_09_210241) do
   end
 
   add_foreign_key "recipes", "users"
+  add_foreign_key "retention_emails", "users"
 end
